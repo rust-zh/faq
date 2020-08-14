@@ -1,6 +1,7 @@
 use crate::entry_writer::EntryWriter;
 use anyhow::{anyhow, Context, Result};
 use glob::glob;
+use std::env;
 use std::ffi::OsStr;
 use std::fs::{self, File};
 use std::io::{BufWriter, Write};
@@ -19,8 +20,9 @@ const HEADER: &str = r#"<!DOCTYPE html>
 const FOOTER: &str = r#"</html>"#;
 
 fn main() -> Result<()> {
+    env::set_current_dir(env::var("CARGO_MANIFEST_DIR")?)?;
     let out = Path::new("out");
-    fs::remove_dir_all(out)?;
+    let _ = fs::remove_dir_all(out);
     fs::create_dir_all(out)?;
     for entry in fs::read_dir("res")? {
         let entry = entry?;
