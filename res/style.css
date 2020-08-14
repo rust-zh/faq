@@ -1,0 +1,44 @@
+body {
+    margin: 1em 2em;
+}
+
+h1 {
+    font-size: 140%;
+}
+
+article {
+    margin: 2em 0;
+}
+
+article > h1 {
+    font-size: 120%;
+}
+
+h1:target {
+    background-color: #FDFFD3;
+}
+
+h1 > a {
+    position: relative;
+}
+
+h1 > a:hover::before {
+    position: absolute;
+    left: -3ex;
+    content: '\2002\00a7\2002';
+}
+
+a {
+    color: #3873AD;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background-color: #F5F5F5;
+    padding: 0 0.1em;
+    border-radius: 3px;
+}

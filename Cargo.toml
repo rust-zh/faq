@@ -1,0 +1,12 @@
+[package]
+name = "rust-zh-faq"
+version = "0.1.0"
+authors = ["Xidorn Quan <me@upsuper.org>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+anyhow = "1.0.32"
+glob = "0.3.0"
+pulldown-cmark = "0.7.2"
+v_htmlescape = "0.10.0"
