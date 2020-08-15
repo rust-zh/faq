@@ -6,7 +6,7 @@
 
 [`tokio`][tokio] 和 [`async-std`][async-std] 是同一个层次的，主要提供异步运行时的实现，都依赖 `futures` 提供的元语，但因为处理的层次不同，所以可以看到一些自定义的与 `futures` 差不多的模块。
 
-此外，虽然目前 [`Stream`][stream] 是由 `futures` 提供的，但未来如果编译器要实现[异步生成器][generator]（async generator），这个 trait 也很可能会进入标准库，因而对其的扩展也依然独立放进了的 `StreamExt` 里。
+此外，虽然目前 [`Stream`][stream] 是由 `futures` 提供的，但未来如果编译器要实现[异步生成器][generator]（async generator），这个 trait 也很可能会进入标准库，因而对其的扩展也依然放进了独立的 `StreamExt` 里。
 
 
 [future]: https://doc.rust-lang.org/std/future/trait.Future.html
