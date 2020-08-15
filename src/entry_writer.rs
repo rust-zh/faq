@@ -47,9 +47,9 @@ where
         match tag {
             Tag::Paragraph => write!(output, "<p>"),
             Tag::Heading(level) if level == 1 => {
-                write!(output, r##"<h1 id="{0}"><a href="#{0}">"##, self.name)
+                write!(output, r##"<h2 id="{0}"><a href="#{0}">"##, self.name)
             }
-            Tag::Heading(level) => write!(output, "<h{}>", level),
+            Tag::Heading(level) => write!(output, "<h{}>", level + 1),
             Tag::Link(_, dest, _) => write!(output, r#"<a href="{}">"#, dest),
             tag => unimplemented!("tag {:?} not supported", tag),
         }
@@ -59,8 +59,8 @@ where
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "</p>"),
-            Tag::Heading(level) if level == 1 => write!(output, "</a></h1>"),
-            Tag::Heading(level) => write!(output, "</h{}>", level),
+            Tag::Heading(level) if level == 1 => write!(output, "</a></h2>"),
+            Tag::Heading(level) => write!(output, "</h{}>", level + 1),
             Tag::Link(_, _, _) => write!(output, "</a>"),
             tag => unimplemented!("tag {:?} not supported", tag),
         }

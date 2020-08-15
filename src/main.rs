@@ -12,6 +12,7 @@ mod entry_writer;
 const HEADER: &str = r#"<!DOCTYPE html>
 <html lang="zh-CN">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rust 常见疑问汇总</title>
 <link rel="stylesheet" href="style.css">
 <h1>Rust 常见疑问汇总</h1>
