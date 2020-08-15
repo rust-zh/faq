@@ -8,21 +8,23 @@ h1 {
 
 article {
     margin: 2em 0;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 1em;
 }
 
-article > h1 {
-    font-size: 120%;
+h2 {
+    font-size: 100%;
 }
 
-h1:target {
+h2:target {
     background-color: #FDFFD3;
 }
 
-h1 > a {
+h2 > a {
     position: relative;
 }
 
-h1 > a:hover::before {
+h2 > a:hover::before {
     position: absolute;
     left: -3ex;
     content: '\2002\00a7\2002';
