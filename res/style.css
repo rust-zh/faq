@@ -7,6 +7,7 @@ h1 {
 }
 
 article {
+    position: relative;
     margin: 2em 0;
     border-bottom: 1px solid lightgray;
     padding-bottom: 1em;
@@ -43,4 +44,25 @@ code {
     background-color: #F5F5F5;
     padding: 0 0.1em;
     border-radius: 3px;
+}
+
+.edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 1.5em;
+    text-indent: -10em;
+    overflow: hidden;
+    background: center / 1em no-repeat url(edit.svg);
+    opacity: .1;
+}
+
+h2:hover ~ .edit, .edit:hover {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .edit {
+        transition: opacity 250ms;
+    }
 }
