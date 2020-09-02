@@ -7,6 +7,8 @@ use std::ffi::OsStr;
 use std::fs::{self, File};
 use std::io::BufWriter;
 use std::path::Path;
+use syntect::highlighting::ThemeSet;
+use syntect::html::{css_for_theme_with_class_style, ClassStyle};
 
 mod entry_renderer;
 mod entry_writer;
@@ -15,6 +17,8 @@ mod entry_writer;
 struct Data {
     entries: Vec<String>,
 }
+
+const CODE_HIGHLIGHT_CLASS_STYLE: ClassStyle = ClassStyle::SpacedPrefixed { prefix: "s-" };
 
 fn main() -> Result<()> {
     env::set_current_dir(env::var("CARGO_MANIFEST_DIR")?)?;
@@ -52,6 +56,14 @@ fn main() -> Result<()> {
                 .with_context(|| format!("failed to link {:?}", entry.file_name()))?;
         }
     }
+
+    // Write style sheet for code highlight.
+    let theme_set = ThemeSet::load_defaults();
+    let theme = theme_set.themes.get("Solarized (light)").unwrap();
+    fs::write(
+        &out.join("highlight.css"),
+        css_for_theme_with_class_style(theme, CODE_HIGHLIGHT_CLASS_STYLE),
+    )?;
 
     Ok(())
 }

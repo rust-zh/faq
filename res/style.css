@@ -46,6 +46,11 @@ code {
     border-radius: 3px;
 }
 
+pre.code {
+    background-color: #F5F5F5;
+    padding: 1em;
+}
+
 .edit {
     position: absolute;
     top: 0;
