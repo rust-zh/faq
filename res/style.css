@@ -1,5 +1,10 @@
 body {
-    margin: 1em 2em;
+    margin: 2em;
+}
+
+main {
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -15,6 +20,7 @@ article {
 
 h2 {
     font-size: 100%;
+    margin-right: calc(24px + .5em);
 }
 
 h2:target {
@@ -49,6 +55,7 @@ code {
 pre.code {
     background-color: #F5F5F5;
     padding: 1em;
+    overflow: auto;
 }
 
 .edit {
