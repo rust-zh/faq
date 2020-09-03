@@ -12,6 +12,10 @@
         <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/binary-size.md">编辑</a>
     </article>
     <article>
+        <h2 id="error-handling"><a href="#error-handling">错误处理推荐使用什么库？</a></h2><p>目前一般认为对于应用程序推荐使用 <a href="https://crates.io/crates/anyhow"><code>anyhow</code></a>，而对于库推荐使用 <a href="https://crates.io/crates/thiserror"><code>thiserror</code></a>。</p><p><code>anyhow</code> 提供了一个基于 trait 对象的错误类型，可以很容易地将不同来源的错误统一到单一来源，并可以方便地为错误添加上下文，以及就地创建新的错误。</p><p><code>thiserror</code> 则提供了一个 derive 宏，方便为自定义的错误类型实现 <a href="https://doc.rust-lang.org/std/error/trait.Error.html"><code>Error</code> trait</a>。</p>
+        <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/error-handling.md">编辑</a>
+    </article>
+    <article>
         <h2 id="format-macro"><a href="#format-macro">格式化字符串的方法，如 <code>println</code>、<code>info</code> 等一般通过宏来实现，这是为什么？</a></h2><p>因为 Rust 里函数不支持变长参数，因而如果要做编译期类型检查，就必须通过宏来实现。</p>
         <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/format-macro.md">编辑</a>
     </article>
@@ -35,7 +39,7 @@
 <span class="s-meta s-trait s-rust"><span class="s-storage s-type s-trait s-rust">trait</span> <span class="s-entity s-name s-trait s-rust">Foo</span>: AsBase <span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-begin s-rust">{</span>
     <span class="s-comment s-line s-double-slash s-rust"><span class="s-punctuation s-definition s-comment s-rust">//</span> ...</span>
 </span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
-</span></pre><p>不支持的主要原因是在 trait 对象的虚表中没有相应的数据指向另一个 trait 的虚表，而不提供相应数据的原因可能是由于这很可能产生过多无用的虚表，导致二进制体积的膨胀。</p><p>更多关于这一话题的讨论可以参考 <a href="https://github.com/rust-lang/rfcs/issues/2765">RFC 2765</a> 以及 <a href="https://articles.bchlr.de/traits-dynamic-dispatch-upcasting">Traits, dynamic dispatch and upcasting</a>。</p>
+</span></pre><p>不支持的主要原因是在 trait 对象的虚表中没有相应的数据指向另一个 trait 的虚表，而不提供相应数据的原因可能是由于这很容易产生过多无用的虚表，进而导致二进制体积的膨胀。</p><p>更多关于这一话题的讨论可以参考 <a href="https://github.com/rust-lang/rfcs/issues/2765">RFC 2765</a> 以及 <a href="https://articles.bchlr.de/traits-dynamic-dispatch-upcasting">Traits, dynamic dispatch and upcasting</a>。</p>
         <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/trait-obj-upcast.md">编辑</a>
     </article>
     </main>
