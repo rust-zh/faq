@@ -20,7 +20,7 @@ article {
 
 h2 {
     font-size: 100%;
-    margin-right: calc(24px + .5em);
+    padding-right: calc(24px + .5em);
 }
 
 h2:target {
