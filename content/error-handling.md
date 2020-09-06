@@ -6,6 +6,7 @@
 
 `thiserror` 则提供了一个 derive 宏，方便为自定义的错误类型实现 [`Error` trait][error-trait]。
 
+
 [anyhow]: https://crates.io/crates/anyhow
 [thiserror]: https://crates.io/crates/thiserror
 [error-trait]: https://doc.rust-lang.org/std/error/trait.Error.html

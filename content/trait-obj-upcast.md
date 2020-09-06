@@ -21,4 +21,8 @@ trait Foo: AsBase {
 
 不支持的主要原因是在 trait 对象的虚表中没有相应的数据指向另一个 trait 的虚表，而不提供相应数据的原因可能是由于这很容易产生过多无用的虚表，进而导致二进制体积的膨胀。
 
-更多关于这一话题的讨论可以参考 [RFC 2765](https://github.com/rust-lang/rfcs/issues/2765) 以及 [Traits, dynamic dispatch and upcasting](https://articles.bchlr.de/traits-dynamic-dispatch-upcasting)。
+更多关于这一话题的讨论可以参考 [RFC 2765][rfc2765] 以及 [Traits, dynamic dispatch and upcasting][bchlr]。
+
+
+[rfc2765]: https://github.com/rust-lang/rfcs/issues/2765
+[bchlr]: https://articles.bchlr.de/traits-dynamic-dispatch-upcasting
