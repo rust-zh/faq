@@ -73,6 +73,7 @@ h2:hover ~ .edit, .edit:hover {
 footer {
   font-size: 15px;
   line-height: 1;
+  display: flex;
 }
 
 .cc0, .telegram {
@@ -89,6 +90,7 @@ footer {
 .telegram {
   width: 60px;
   height: 15px;
+  margin-right: .5em;
   background: 0 0 / 100% 100% url(telegram.png);
 }
 
