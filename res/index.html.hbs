@@ -5,13 +5,18 @@
 <title>Rust 常见疑问汇总</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="highlight.css">
+<header>
+  <h1>Rust 常见疑问汇总</h1>
+</header>
 <main>
-    <h1>Rust 常见疑问汇总</h1>
-    {{#each entries as |entry|~}}
-    <article>
-        {{render_entry entry}}
-        <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/{{ entry }}.md">编辑</a>
-    </article>
-    {{/each~}}
+  {{#each entries as |entry|~}}
+  <article>
+    {{render_entry entry}}
+    <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/{{ entry }}.md">编辑</a>
+  </article>
+  {{/each~}}
 </main>
+<footer>
+  <a rel="license" class="cc0" href="https://creativecommons.org/publicdomain/zero/1.0/deed.zh">CC0</a>
+</footer>
 </html>

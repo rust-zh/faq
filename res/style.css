@@ -1,10 +1,6 @@
 body {
-    margin: 2em;
-}
-
-main {
+    margin: 2em auto;
     max-width: 750px;
-    margin: 0 auto;
 }
 
 h1 {
@@ -71,6 +67,14 @@ pre.code {
 
 h2:hover ~ .edit, .edit:hover {
     opacity: 1;
+}
+
+.cc0 {
+  display: block;
+  width: 80px;
+  height: 15px;
+  color: transparent;
+  background-image: url(cc0.png);
 }
 
 @media (prefers-reduced-motion: no-preference) {
