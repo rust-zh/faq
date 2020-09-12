@@ -69,12 +69,26 @@ h2:hover ~ .edit, .edit:hover {
     opacity: 1;
 }
 
+footer {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.cc0, .telegram {
+  display: inline-block;
+  color: transparent;
+}
+
 .cc0 {
-  display: block;
   width: 80px;
   height: 15px;
-  color: transparent;
   background-image: url(cc0.png);
+}
+
+.telegram {
+  width: 60px;
+  height: 15px;
+  background: 0 0 / 100% 100% url(telegram.png);
 }
 
 @media (prefers-reduced-motion: no-preference) {
