@@ -14,6 +14,10 @@
     <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/binary-size.md">编辑</a>
   </article>
   <article>
+    <h2 id="common-ide"><a href="#common-ide">写 Rust 有哪些常用的开发环境？</a></h2><p>目前来看，最流行的 Rust 开发环境是 <a href="https://code.visualstudio.com/">Visual Studio Code</a> 配合 <a href="https://rust-analyzer.github.io/">rust-analyzer</a>，其次是在 <a href="https://www.jetbrains.com/clion/">CLion</a> 或其他 <a href="https://www.jetbrains.com/products.html#type=ide">IntelliJ</a> 平台的 IDE 上安装 <a href="https://intellij-rust.github.io/">Intellij Rust</a> 插件。使用 <a href="https://www.vim.org/">Vim</a> 或 <a href="https://www.gnu.org/software/emacs/">Emacs</a> 进行开发的也不在少数，此外也有人使用其他编辑器。</p><p>Rust 群关于这一问题有定期调查：</p><ul><li>2020年：<a href="https://t.me/c/1264662201/96391">5月</a>、<a href="https://t.me/c/1264662201/116314">8月</a>、<a href="https://t.me/c/1264662201/130996">11月</a></li></ul>
+    <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/common-ide.md">编辑</a>
+  </article>
+  <article>
     <h2 id="error-handling"><a href="#error-handling">错误处理推荐使用什么库？</a></h2><p>目前一般认为对于应用程序推荐使用 <a href="https://crates.io/crates/anyhow"><code>anyhow</code></a>，而对于库推荐使用 <a href="https://crates.io/crates/thiserror"><code>thiserror</code></a>。</p><p><code>anyhow</code> 提供了一个基于 trait 对象的错误类型，可以很容易地将不同来源的错误统一到单一来源，并可以方便地为错误添加上下文，以及就地创建新的错误。</p><p><code>thiserror</code> 则提供了一个 derive 宏，方便为自定义的错误类型实现 <a href="https://doc.rust-lang.org/std/error/trait.Error.html"><code>Error</code> trait</a>。</p>
     <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/error-handling.md">编辑</a>
   </article>
