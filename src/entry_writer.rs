@@ -81,6 +81,8 @@ where
                 };
                 write!(output, r#"<pre class="code">"#)
             }
+            Tag::List(None) => write!(output, "<ul>"),
+            Tag::Item => write!(output, "<li>"),
             tag => unimplemented!("tag {:?} not supported", tag),
         }
     }
@@ -96,6 +98,8 @@ where
                 self.current_syntax = None;
                 write!(output, "</pre>")
             }
+            Tag::List(None) => write!(output, "</ul>"),
+            Tag::Item => write!(output, "</li>"),
             tag => unimplemented!("tag {:?} not supported", tag),
         }
     }
