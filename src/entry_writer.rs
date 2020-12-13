@@ -6,20 +6,20 @@ use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::{SyntaxReference, SyntaxSet};
 use v_htmlescape::escape;
 
-pub struct EntryWriter<'n, 'c, W> {
+pub struct EntryWriter<'a, W> {
     output: W,
-    name: &'n str,
-    content: &'c str,
+    name: &'a str,
+    content: &'a str,
     current_syntax: Option<&'static SyntaxReference>,
 }
 
 static SYNTAX_SET: Lazy<SyntaxSet> = Lazy::new(SyntaxSet::load_defaults_newlines);
 
-impl<'n, 'c, W> EntryWriter<'n, 'c, W>
+impl<'a, W> EntryWriter<'a, W>
 where
     W: Write,
 {
-    pub fn new(output: W, name: &'n str, content: &'c str) -> Self {
+    pub fn new(output: W, name: &'a str, content: &'a str) -> Self {
         EntryWriter {
             output,
             name,
@@ -34,7 +34,7 @@ where
             .collect()
     }
 
-    fn handle_event(&mut self, event: Event<'c>) -> io::Result<()> {
+    fn handle_event(&mut self, event: Event<'a>) -> io::Result<()> {
         let output = &mut self.output;
         match event {
             Event::Start(tag) => self.start_tag(tag),
@@ -64,7 +64,7 @@ where
         }
     }
 
-    fn start_tag(&mut self, tag: Tag<'c>) -> io::Result<()> {
+    fn start_tag(&mut self, tag: Tag<'a>) -> io::Result<()> {
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "<p>"),
@@ -87,7 +87,7 @@ where
         }
     }
 
-    fn end_tag(&mut self, tag: Tag<'c>) -> io::Result<()> {
+    fn end_tag(&mut self, tag: Tag<'a>) -> io::Result<()> {
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "</p>"),
