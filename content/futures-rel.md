@@ -1,4 +1,4 @@
-# 标准库的 `Future`、`futures` crate、`tokio` 和 `async-std` 等之间的关系是什么？
+# 标准库的 `Future`、futures crate、tokio 和 async-std 等之间的关系是什么？
 
 标准库的 [`Future`][future] [特质]以及相关的 [`Context`][context]、[`Pin`][pin]、[`Waker`][waker] 等是核心。由于编译器编译[异步函数]需要依赖它们的定义，因而它们必须被包含在标准库里。
 
