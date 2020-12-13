@@ -43,6 +43,11 @@ a:hover {
     text-decoration: underline;
 }
 
+a:not([href]) {
+  color: inherit;
+  text-decoration: underline dashed;
+}
+
 code {
     background-color: #F5F5F5;
     padding: 0 0.1em;
