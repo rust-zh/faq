@@ -3,6 +3,7 @@ use anyhow::{anyhow, Context as _, Result};
 use glob::glob;
 use handlebars::Handlebars;
 use serde::Serialize;
+use std::collections::HashMap;
 use std::env;
 use std::ffi::OsStr;
 use std::fs::{self, File};
@@ -24,6 +25,10 @@ const CODE_HIGHLIGHT_CLASS_STYLE: ClassStyle = ClassStyle::SpacedPrefixed { pref
 fn main() -> Result<()> {
     env::set_current_dir(env::var("CARGO_MANIFEST_DIR")?)?;
 
+    let glossary = fs::read("content/glossary.toml").context("failed to read glossary file")?;
+    let glossary: HashMap<String, String> =
+        toml::from_slice(&glossary).context("failed to parse glossary file")?;
+
     let mut handlebars = Handlebars::new();
     handlebars.register_helper(
         "render_entry",
@@ -39,7 +44,7 @@ fn main() -> Result<()> {
                     .and_then(|param| param.value().as_str())
                     .ok_or_else(|| handlebars::RenderError::new("name invalid"))?;
                 let content = fs::read_to_string(format!("content/{}.md", name))?;
-                EntryWriter::new(OutputWriter(out), name, &content).run()?;
+                EntryWriter::new(OutputWriter(out), name, &content, &glossary).run()?;
                 Ok(())
             },
         ),

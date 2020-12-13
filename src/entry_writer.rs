@@ -1,6 +1,7 @@
 use crate::CODE_HIGHLIGHT_CLASS_STYLE;
 use once_cell::sync::Lazy;
-use pulldown_cmark::{CodeBlockKind, Event, Parser, Tag};
+use pulldown_cmark::{BrokenLink, CodeBlockKind, Event, Options, Parser, Tag};
+use std::collections::HashMap;
 use std::io::{self, Write};
 use syntect::html::ClassedHTMLGenerator;
 use syntect::parsing::{SyntaxReference, SyntaxSet};
@@ -10,6 +11,7 @@ pub struct EntryWriter<'a, W> {
     output: W,
     name: &'a str,
     content: &'a str,
+    glossary: &'a HashMap<String, String>,
     current_syntax: Option<&'static SyntaxReference>,
 }
 
@@ -19,22 +21,39 @@ impl<'a, W> EntryWriter<'a, W>
 where
     W: Write,
 {
-    pub fn new(output: W, name: &'a str, content: &'a str) -> Self {
+    pub fn new(
+        output: W,
+        name: &'a str,
+        content: &'a str,
+        glossary: &'a HashMap<String, String>,
+    ) -> Self {
         EntryWriter {
             output,
             name,
             content,
+            glossary,
             current_syntax: None,
         }
     }
 
     pub fn run(mut self) -> io::Result<()> {
-        Parser::new(self.content)
-            .map(|event| self.handle_event(event))
-            .collect()
+        let glossary = self.glossary;
+        let mut broken_link_callback = move |link: BrokenLink<'_>| {
+            glossary
+                .get(link.reference)
+                .map(|title| ("".into(), title.as_str().into()))
+        };
+        Parser::new_with_broken_link_callback(
+            self.content,
+            Options::empty(),
+            Some(&mut broken_link_callback),
+        )
+        .map(|event| self.handle_event(event))
+        .collect::<Result<(), _>>()?;
+        Ok(())
     }
 
-    fn handle_event(&mut self, event: Event<'a>) -> io::Result<()> {
+    fn handle_event(&mut self, event: Event<'_>) -> io::Result<()> {
         let output = &mut self.output;
         match event {
             Event::Start(tag) => self.start_tag(tag),
@@ -64,7 +83,7 @@ where
         }
     }
 
-    fn start_tag(&mut self, tag: Tag<'a>) -> io::Result<()> {
+    fn start_tag(&mut self, tag: Tag<'_>) -> io::Result<()> {
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "<p>"),
@@ -72,7 +91,16 @@ where
                 write!(output, r##"<h2 id="{0}"><a href="#{0}">"##, self.name)
             }
             Tag::Heading(level) => write!(output, "<h{}>", level + 1),
-            Tag::Link(_, dest, _) => write!(output, r#"<a href="{}">"#, dest),
+            Tag::Link(_, dest, title) => {
+                write!(output, "<a")?;
+                if !dest.is_empty() {
+                    write!(output, r#" href="{}""#, dest)?;
+                }
+                if !title.is_empty() {
+                    write!(output, r#" title="{}""#, title)?;
+                }
+                write!(output, ">")
+            }
             Tag::CodeBlock(CodeBlockKind::Fenced(lang)) => {
                 assert!(self.current_syntax.is_none());
                 self.current_syntax = match SYNTAX_SET.find_syntax_by_token(&lang) {
@@ -87,7 +115,7 @@ where
         }
     }
 
-    fn end_tag(&mut self, tag: Tag<'a>) -> io::Result<()> {
+    fn end_tag(&mut self, tag: Tag<'_>) -> io::Result<()> {
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "</p>"),
