@@ -1,3 +1,4 @@
+use crate::entry_writer::EntryWriter;
 use anyhow::{anyhow, Context as _, Result};
 use glob::glob;
 use handlebars::Handlebars;
@@ -5,12 +6,12 @@ use serde::Serialize;
 use std::env;
 use std::ffi::OsStr;
 use std::fs::{self, File};
-use std::io::BufWriter;
+use std::io::{self, BufWriter};
 use std::path::Path;
+use std::str;
 use syntect::highlighting::ThemeSet;
 use syntect::html::{css_for_theme_with_class_style, ClassStyle};
 
-mod entry_renderer;
 mod entry_writer;
 
 #[derive(Serialize)]
@@ -24,7 +25,25 @@ fn main() -> Result<()> {
     env::set_current_dir(env::var("CARGO_MANIFEST_DIR")?)?;
 
     let mut handlebars = Handlebars::new();
-    handlebars.register_helper("render_entry", Box::new(entry_renderer::render_entry));
+    handlebars.register_helper(
+        "render_entry",
+        Box::new(
+            |helper: &handlebars::Helper,
+             _: &Handlebars,
+             _: &handlebars::Context,
+             _: &mut handlebars::RenderContext,
+             out: &mut dyn handlebars::Output|
+             -> handlebars::HelperResult {
+                let name = helper
+                    .param(0)
+                    .and_then(|param| param.value().as_str())
+                    .ok_or_else(|| handlebars::RenderError::new("name invalid"))?;
+                let content = fs::read_to_string(format!("content/{}.md", name))?;
+                EntryWriter::new(OutputWriter(out), name, &content).run()?;
+                Ok(())
+            },
+        ),
+    );
 
     let entries = glob("content/*.md")
         .unwrap()
@@ -66,4 +85,20 @@ fn main() -> Result<()> {
     )?;
 
     Ok(())
+}
+
+struct OutputWriter<'a, T: ?Sized>(&'a mut T);
+
+impl<'a, T: ?Sized> io::Write for OutputWriter<'a, T>
+where
+    T: handlebars::Output,
+{
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.0.write(str::from_utf8(buf).unwrap())?;
+        Ok(buf.len())
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        Ok(())
+    }
 }
