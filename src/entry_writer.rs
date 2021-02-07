@@ -48,8 +48,7 @@ where
             Options::empty(),
             Some(&mut broken_link_callback),
         )
-        .map(|event| self.handle_event(event))
-        .collect::<Result<(), _>>()?;
+        .try_for_each(|event| self.handle_event(event))?;
         Ok(())
     }
 
