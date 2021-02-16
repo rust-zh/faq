@@ -1,46 +1,46 @@
 body {
-    margin: 0 auto;
-    padding: 1em;
-    max-width: 750px;
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 750px;
 }
 
 h1 {
-    font-size: 140%;
+  font-size: 140%;
 }
 
 article {
-    position: relative;
-    margin: 2em 0;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 1em;
+  position: relative;
+  margin: 2em 0;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1em;
 }
 
 h2 {
-    font-size: 100%;
-    padding-right: calc(24px + .5em);
+  font-size: 100%;
+  padding-right: calc(24px + .5em);
 }
 
 h2:target {
-    background-color: #FDFFD3;
+  background-color: #FDFFD3;
 }
 
 h2 > a {
-    position: relative;
+  position: relative;
 }
 
 h2 > a:hover::before {
-    position: absolute;
-    left: -3ex;
-    content: '\2002\00a7\2002';
+  position: absolute;
+  left: -3ex;
+  content: '\2002\00a7\2002';
 }
 
 a {
-    color: #3873AD;
-    text-decoration: none;
+  color: #3873AD;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a:not([href]) {
@@ -49,30 +49,30 @@ a:not([href]) {
 }
 
 code {
-    background-color: #F5F5F5;
-    padding: 0 0.1em;
-    border-radius: 3px;
+  background-color: #F5F5F5;
+  padding: 0 0.1em;
+  border-radius: 3px;
 }
 
 pre.code {
-    background-color: #F5F5F5;
-    padding: 1em;
-    overflow: auto;
+  background-color: #F5F5F5;
+  padding: 1em;
+  overflow: auto;
 }
 
 .edit {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-left: 1.5em;
-    text-indent: -10em;
-    overflow: hidden;
-    background: center / 1em no-repeat url(edit.svg);
-    opacity: .1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 1.5em;
+  text-indent: -10em;
+  overflow: hidden;
+  background: center / 1em no-repeat url(edit.svg);
+  opacity: .1;
 }
 
 h2:hover ~ .edit, .edit:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 footer {
@@ -100,7 +100,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .edit {
-        transition: opacity 250ms;
-    }
+  .edit {
+    transition: opacity 250ms;
+  }
 }
