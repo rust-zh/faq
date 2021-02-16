@@ -75,6 +75,21 @@ h2:hover ~ .edit, .edit:hover {
   opacity: 1;
 }
 
+.add-container {
+  margin: -1em 0 2em;
+}
+
+.add {
+  font-size: 80%;
+  color: #666;
+  opacity: .3;
+}
+
+.add:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
 footer {
   font-size: 15px;
   line-height: 1;
@@ -100,7 +115,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .edit {
+  .edit, .add {
     transition: opacity 250ms;
   }
 }
