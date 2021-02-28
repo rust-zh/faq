@@ -60,6 +60,10 @@
 </span></pre><p>不支持的主要原因是在<a title="trait object">特质对象</a>的<a title="vtable">虚表</a>中没有相应的数据指向另一个特质的虚表，而不提供相应数据的原因可能是由于这很容易产生过多无用的虚表，进而导致二进制体积的膨胀。</p><p>更多关于这一话题的讨论可以参考 <a href="https://github.com/rust-lang/rfcs/issues/2765">RFC 2765</a> 以及 <a href="https://articles.bchlr.de/traits-dynamic-dispatch-upcasting">Traits, dynamic dispatch and upcasting</a>。</p>
     <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/trait-obj-upcast.md">编辑</a>
   </article>
+  <article>
+    <h2 id="vec-new-ptr"><a href="#vec-new-ptr">新创建的空 <code>Vec&lt;T&gt;</code> 的指针为何指向<code>1</code>、<code>2</code>、<code>4</code>、<code>8</code>等地址？</a></h2><p>当 <code>Vec</code> 的容量为0时，没有合法的操作会向其指针指向的位置进行读取和写入，进行任何读写之前都必然会有一次内存分配，因此这个初始的指针并不需要是一个有效的指针。这也使得创建 <code>Vec</code> 本身没有进行实际内存分配的必要，既省去了内存分配的开销，也让创建容器的操作可以在常量上下文中使用。</p><p>而由于这个指针在类型上依然是指向 <code>T</code> 的指针，它必须有正确的<a title="alignment">对齐</a>，因此简单起见便选择了类型的对齐的大小作为这个无效指针指向的地址。</p><p>空指针也满足上面的要求，为何这个初始指针不是一个空指针呢？</p><p>这是因为Rust有<a title="null pointer optimization">空指针优化</a>的惯例：对于各种类似指针的类型如 <code>&amp;T</code>、<code>&amp;mut T</code>、<code>Box&lt;T&gt;</code>，将它们包进 <code>Option</code> 里不会改变它们的大小，即 <code>Option&lt;Box&lt;T&gt;&gt;</code> 与 <code>Box&lt;T&gt;</code> 的大小是相同的。而这个优化的机理就是要求这些类型不能指向<code>0</code>，使得<code>0</code>这个值可以被 <code>None</code> 分支所使用。这一优化是来源于Rust对<a title="zero-cost abstractions">零开销抽象</a>和<a title="null safety">空指针安全</a>的要求，它保证了人们可以使用 <code>Option</code> 替代可为空的指针而不需要付出额外的运行时代价。</p><p><code>Vec</code> 虽然不是一个指针类型，但其内部使用的指针也遵循了同样的惯例，这也让 <code>Option&lt;Vec&lt;T&gt;&gt;</code> 与 <code>Vec&lt;T&gt;</code> 的大小是一致的。</p>
+    <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/vec-new-ptr.md">编辑</a>
+  </article>
   <div class="add-container">
     <a class="add" href="https://github.com/rust-zh/faq/tree/master/content">+ 贡献新条目</a>
   </div>
