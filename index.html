@@ -43,8 +43,8 @@
   </article>
   <article>
     <h2 id="trait-obj-upcast"><a href="#trait-obj-upcast">如果有一个 <code>trait Foo: Base</code>，如何将一个 <code>&amp;dyn Foo</code> 转换到 <code>&amp;dyn Base</code>？</a></h2><p>Rust 目前不直接提供这种转换，如果需要转换可以使用一个中间<a title="trait">特质</a>来实现，如</p><pre class="code"><span class="s-source s-rust"><span class="s-meta s-trait s-rust"><span class="s-storage s-type s-trait s-rust">trait</span> <span class="s-entity s-name s-trait s-rust">Base</span> <span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-begin s-rust">{</span>
-    <span class="s-comment s-line s-double-slash s-rust"><span class="s-punctuation s-definition s-comment s-rust">//</span> ...</span>
-</span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
+    <span class="s-comment s-line s-double-slash s-rust"><span class="s-punctuation s-definition s-comment s-rust">//</span> ...
+</span></span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
 
 <span class="s-meta s-trait s-rust"><span class="s-storage s-type s-trait s-rust">trait</span> <span class="s-entity s-name s-trait s-rust">AsBase</span> <span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-begin s-rust">{</span>
     <span class="s-meta s-function s-rust"><span class="s-meta s-function s-rust"><span class="s-storage s-type s-function s-rust">fn</span> </span><span class="s-entity s-name s-function s-rust">as_base</span></span><span class="s-meta s-function s-rust"><span class="s-meta s-function s-parameters s-rust"><span class="s-punctuation s-section s-parameters s-begin s-rust">(</span><span class="s-keyword s-operator s-rust">&amp;</span><span class="s-variable s-parameter s-rust">self</span></span><span class="s-meta s-function s-rust"><span class="s-meta s-function s-parameters s-rust"><span class="s-punctuation s-section s-parameters s-end s-rust">)</span></span></span></span><span class="s-meta s-function s-rust"> <span class="s-meta s-function s-return-type s-rust"><span class="s-punctuation s-separator s-rust">-&gt;</span> <span class="s-keyword s-operator s-rust">&amp;</span>dyn Base</span></span><span class="s-punctuation s-terminator s-rust">;</span>
@@ -55,8 +55,8 @@
 </span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
 
 <span class="s-meta s-trait s-rust"><span class="s-storage s-type s-trait s-rust">trait</span> <span class="s-entity s-name s-trait s-rust">Foo</span>: AsBase <span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-begin s-rust">{</span>
-    <span class="s-comment s-line s-double-slash s-rust"><span class="s-punctuation s-definition s-comment s-rust">//</span> ...</span>
-</span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
+    <span class="s-comment s-line s-double-slash s-rust"><span class="s-punctuation s-definition s-comment s-rust">//</span> ...
+</span></span><span class="s-meta s-block s-rust"><span class="s-punctuation s-section s-block s-end s-rust">}</span></span></span>
 </span></pre><p>不支持的主要原因是在<a title="trait object">特质对象</a>的<a title="vtable">虚表</a>中没有相应的数据指向另一个特质的虚表，而不提供相应数据的原因可能是由于这很容易产生过多无用的虚表，进而导致二进制体积的膨胀。</p><p>更多关于这一话题的讨论可以参考 <a href="https://github.com/rust-lang/rfcs/issues/2765">RFC 2765</a> 以及 <a href="https://articles.bchlr.de/traits-dynamic-dispatch-upcasting">Traits, dynamic dispatch and upcasting</a>。</p>
     <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/trait-obj-upcast.md">编辑</a>
   </article>
