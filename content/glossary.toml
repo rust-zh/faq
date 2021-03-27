@@ -2,6 +2,7 @@
 "异步函数" = "async function"
 "动态分发" = "dynamic dispatch"
 "存在类型" = "existential type"
+"胖指针" = "fat pointer"
 "单态化" = "monomorphization"
 "空指针优化" = "null pointer optimization"
 "空指针安全" = "null safety"
