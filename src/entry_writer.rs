@@ -64,8 +64,8 @@ where
                         &SYNTAX_SET,
                         CODE_HIGHLIGHT_CLASS_STYLE,
                     );
-                    for line in text.lines() {
-                        generator.parse_html_for_line(line);
+                    for line in text.split_inclusive('\n') {
+                        generator.parse_html_for_line_which_includes_newline(line);
                     }
                     write!(output, "{}", generator.finalize())
                 } else {
