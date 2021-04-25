@@ -4,5 +4,5 @@
 
 
 [num-traits]: https://crates.io/crates/num-traits
-[prim-int]: https://docs.rs/num-traits/0.2.14/num_traits/int/trait.PrimInt.html
-[float]: https://docs.rs/num-traits/0.2.14/num_traits/float/trait.Float.html
+[prim-int]: https://docs.rs/num-traits/0.2/num_traits/int/trait.PrimInt.html
+[float]: https://docs.rs/num-traits/0.2/num_traits/float/trait.Float.html

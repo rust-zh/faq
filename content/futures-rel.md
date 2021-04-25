@@ -15,11 +15,11 @@
 [waker]: https://doc.rust-lang.org/std/task/struct.Waker.html
 
 [futures]: https://crates.io/crates/futures
-[future-ext]: https://docs.rs/futures/*/futures/future/trait.FutureExt.html
-[stream]: https://docs.rs/futures/*/futures/stream/trait.Stream.html
-[stream-ext]: https://docs.rs/futures/*/futures/stream/trait.StreamExt.html
-[channel]: https://docs.rs/futures/*/futures/channel/index.html
-[executor]: https://docs.rs/futures/*/futures/executor/index.html
+[future-ext]: https://docs.rs/futures/0.3/futures/future/trait.FutureExt.html
+[stream]: https://docs.rs/futures/0.3/futures/stream/trait.Stream.html
+[stream-ext]: https://docs.rs/futures/0.3/futures/stream/trait.StreamExt.html
+[channel]: https://docs.rs/futures/0.3/futures/channel/index.html
+[executor]: https://docs.rs/futures/0.3/futures/executor/index.html
 
 [tokio]: https://crates.io/crates/tokio
 [async-std]: https://crates.io/crates/async-std
