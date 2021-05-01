@@ -1,6 +1,6 @@
 # 如何同时等待多个 `Future`？
 
-如果想要等待多个 `Future` 都完成后返回，对于固定数量的 `Future` 可以使用 [futures] 所提供的 [`join`][join]、[`join3`][join3]、[`join4`][join4] 等函数，或者 [tokio] 所提供的 [`join!`][join-macro] 宏，将多个 `Future` 合并为一个进行等待。对于不定数量的 `Future`，比如有一个 `Vec`，则可以使用 `futures` 的 [`join_all`][join_all] 函数。
+如果想要等待多个 `Future` 都完成后返回，对于固定数量的 `Future` 可以使用 [futures] 所提供的 [`join`][join]、[`join3`][join3]、[`join4`][join4] 等函数，或者 [tokio] 所提供的 [`join!`][join-macro] 宏，将多个 `Future` 合并为一个进行等待。对于不定数量的 `Future`，比如有一个 `Vec`，则可以使用 futures 的 [`join_all`][join_all] 函数。
 
 若要在数个 `Future` 中第一个错误发生时就返回，则可以使用它们对应的 [`try_join`][try_join]、[`try_join3`][try_join3]、[`try_join4`][try_join4]、[`try_join_all`][try_join_all] 等函数以及 [`try_join!`][try_join-macro] 宏。
 
