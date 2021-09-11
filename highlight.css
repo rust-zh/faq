@@ -7,10 +7,7 @@
  background-color: #fdf6e3;
 }
 
-.s-comment {
- color: #93a1a1;
-}
-.s-meta.s-documentation {
+.s-comment, .s-meta.s-documentation {
  color: #93a1a1;
 }
 .s-string {
@@ -37,34 +34,10 @@
 .s-keyword {
  color: #859900;
 }
-.s-meta.s-import {
+.s-meta.s-import .s-keyword, .s-keyword.s-control.s-import, .s-keyword.s-control.s-import.s-from, .s-keyword.s-other.s-import, .s-keyword.s-control.s-at-rule.s-include, .s-keyword.s-control.s-at-rule.s-import {
  color: #cb4b16;
 }
-.s-keyword {
- color: #cb4b16;
-}
-.s-keyword.s-control.s-import {
- color: #cb4b16;
-}
-.s-keyword.s-control.s-import.s-from {
- color: #cb4b16;
-}
-.s-keyword.s-other.s-import {
- color: #cb4b16;
-}
-.s-keyword.s-control.s-at-rule.s-include {
- color: #cb4b16;
-}
-.s-keyword.s-control.s-at-rule.s-import {
- color: #cb4b16;
-}
-.s-keyword.s-operator.s-comparison {
- color: #657b83;
-}
-.s-keyword.s-operator.s-assignment {
- color: #657b83;
-}
-.s-keyword.s-operator.s-arithmetic {
+.s-keyword.s-operator.s-comparison, .s-keyword.s-operator.s-assignment, .s-keyword.s-operator.s-arithmetic {
  color: #657b83;
 }
 .s-storage {
@@ -73,16 +46,7 @@
 .s-storage.s-modifier {
  color: #586e75;
 }
-.s-keyword.s-control.s-class {
- color: #b58900;
-}
-.s-entity.s-name {
- color: #b58900;
-}
-.s-entity.s-name.s-class {
- color: #b58900;
-}
-.s-entity.s-name.s-type.s-class {
+.s-keyword.s-control.s-class, .s-entity.s-name, .s-entity.s-name.s-class, .s-entity.s-name.s-type.s-class {
  color: #b58900;
 }
 .s-entity.s-other.s-inherited-class {
@@ -91,13 +55,7 @@
 .s-entity.s-other.s-attribute-name {
  color: #b58900;
 }
-.s-support {
- color: #859900;
-}
-.s-support.s-type {
- color: #859900;
-}
-.s-support.s-class {
+.s-support, .s-support.s-type, .s-support.s-class {
  color: #859900;
 }
 .s-entity.s-name.s-function {
@@ -106,40 +64,22 @@
 .s-punctuation.s-definition.s-variable {
  color: #859900;
 }
-.s-constant {
- color: #b58900;
-}
-.s-constant.s-language {
- color: #b58900;
-}
-.s-meta.s-preprocessor {
+.s-constant, .s-constant.s-language, .s-meta.s-preprocessor {
  color: #b58900;
 }
 .s-entity.s-name.s-section {
  color: #cb4b16;
 }
-.s-support.s-function.s-construct {
+.s-support.s-function.s-construct, .s-keyword.s-other.s-new {
  color: #dc322f;
 }
-.s-keyword.s-other.s-new {
- color: #dc322f;
-}
-.s-constant.s-character {
- color: #cb4b16;
-}
-.s-constant.s-other {
+.s-constant.s-character, .s-constant.s-other {
  color: #cb4b16;
 }
 .s-entity.s-name.s-tag {
  color: #268bd2;
 }
-.s-punctuation.s-definition.s-tag.s-html {
- color: #93a1a1;
-}
-.s-punctuation.s-definition.s-tag.s-begin {
- color: #93a1a1;
-}
-.s-punctuation.s-definition.s-tag.s-end {
+.s-punctuation.s-definition.s-tag.s-html, .s-punctuation.s-definition.s-tag.s-begin, .s-punctuation.s-definition.s-tag.s-end {
  color: #93a1a1;
 }
 .s-support.s-function {
@@ -160,64 +100,25 @@
 .s-invalid {
  background-color: #ec9489;
 }
-.s-string.s-quoted.s-double {
- color: #2aa198;
-}
-.s-string.s-quoted.s-single {
+.s-string.s-quoted.s-double, .s-string.s-quoted.s-single {
  color: #2aa198;
 }
 .s-punctuation.s-definition.s-string {
  color: #839496;
 }
-.s-meta.s-brace.s-square {
+.s-meta.s-brace.s-square, .s-punctuation.s-section.s-brackets {
  color: #268bd2;
 }
-.s-punctuation.s-section.s-brackets {
- color: #268bd2;
-}
-.s-meta.s-brace.s-round {
+.s-meta.s-brace.s-round, .s-meta.s-brace.s-curly, .s-punctuation.s-section, .s-punctuation.s-section.s-block, .s-punctuation.s-definition.s-parameters, .s-punctuation.s-section.s-group {
  color: #657b83;
 }
-.s-meta.s-brace.s-curly {
- color: #657b83;
-}
-.s-punctuation.s-section {
- color: #657b83;
-}
-.s-punctuation.s-section.s-block {
- color: #657b83;
-}
-.s-punctuation.s-definition.s-parameters {
- color: #657b83;
-}
-.s-punctuation.s-section.s-group {
- color: #657b83;
-}
-.s-support.s-constant.s-color {
- color: #b58900;
-}
-.s-invalid.s-deprecated.s-color.s-w3c-non-standard-color-name.s-scss {
+.s-support.s-constant.s-color, .s-invalid.s-deprecated.s-color.s-w3c-non-standard-color-name.s-scss {
  color: #b58900;
 }
 .s-meta.s-selector.s-css {
  color: #657b83;
 }
-.s-entity.s-name.s-tag.s-css {
- color: #b58900;
-}
-.s-entity.s-name.s-tag.s-scss {
- color: #b58900;
-}
-.s-source.s-less {
- color: #b58900;
-}
-.s-keyword.s-control.s-html.s-elements {
- color: #b58900;
-}
-.s-source.s-sass {
- color: #b58900;
-}
-.s-keyword.s-control.s-untitled {
+.s-entity.s-name.s-tag.s-css, .s-entity.s-name.s-tag.s-scss, .s-source.s-less .s-keyword.s-control.s-html.s-elements, .s-source.s-sass .s-keyword.s-control.s-untitled {
  color: #b58900;
 }
 .s-entity.s-other.s-attribute-name.s-class {
@@ -226,67 +127,13 @@
 .s-entity.s-other.s-attribute-name.s-id {
  color: #b58900;
 }
-.s-entity.s-other.s-attribute-name.s-pseudo-element {
+.s-entity.s-other.s-attribute-name.s-pseudo-element, .s-entity.s-other.s-attribute-name.s-tag.s-pseudo-element, .s-entity.s-other.s-attribute-name.s-pseudo-class, .s-entity.s-other.s-attribute-name.s-tag.s-pseudo-class {
  color: #268bd2;
 }
-.s-entity.s-other.s-attribute-name.s-tag.s-pseudo-element {
- color: #268bd2;
-}
-.s-entity.s-other.s-attribute-name.s-pseudo-class {
- color: #268bd2;
-}
-.s-entity.s-other.s-attribute-name.s-tag.s-pseudo-class {
- color: #268bd2;
-}
-.s-text.s-html.s-basic {
+.s-text.s-html.s-basic .s-meta.s-tag.s-other.s-html, .s-text.s-html.s-basic .s-meta.s-tag.s-any.s-html, .s-text.s-html.s-basic .s-meta.s-tag.s-block.s-any, .s-text.s-html.s-basic .s-meta.s-tag.s-inline.s-any, .s-text.s-html.s-basic .s-meta.s-tag.s-structure.s-any.s-html, .s-text.s-html.s-basic .s-source.s-js.s-embedded.s-html, .s-punctuation.s-separator.s-key-value.s-html {
  color: #657b83;
 }
-.s-meta.s-tag.s-other.s-html {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #657b83;
-}
-.s-meta.s-tag.s-any.s-html {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #657b83;
-}
-.s-meta.s-tag.s-block.s-any {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #657b83;
-}
-.s-meta.s-tag.s-inline.s-any {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #657b83;
-}
-.s-meta.s-tag.s-structure.s-any.s-html {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #657b83;
-}
-.s-source.s-js.s-embedded.s-html {
- color: #657b83;
-}
-.s-punctuation.s-separator.s-key-value.s-html {
- color: #657b83;
-}
-.s-text.s-html.s-basic {
- color: #b58900;
-}
-.s-entity.s-other.s-attribute-name.s-html {
- color: #b58900;
-}
-.s-meta.s-tag.s-xml {
- color: #b58900;
-}
-.s-entity.s-other.s-attribute-name {
+.s-text.s-html.s-basic .s-entity.s-other.s-attribute-name.s-html, .s-meta.s-tag.s-xml .s-entity.s-other.s-attribute-name {
  color: #b58900;
 }
 .s-keyword.s-other.s-special-method.s-ruby {
@@ -301,58 +148,22 @@
 .s-keyword.s-other.s-special-method.s-ruby {
  color: #cb4b16;
 }
-.s-meta.s-array {
+.s-meta.s-array .s-support.s-function.s-construct.s-php {
  color: #b58900;
 }
-.s-support.s-function.s-construct.s-php {
- color: #b58900;
-}
-.s-entity.s-name.s-function.s-preprocessor.s-c {
+.s-entity.s-name.s-function.s-preprocessor.s-c, .s-meta.s-preprocessor.s-c.s-include, .s-meta.s-preprocessor.s-macro.s-c {
  color: #cb4b16;
 }
-.s-meta.s-preprocessor.s-c.s-include {
- color: #cb4b16;
-}
-.s-meta.s-preprocessor.s-macro.s-c {
- color: #cb4b16;
-}
-.s-meta.s-preprocessor.s-c.s-include {
+.s-meta.s-preprocessor.s-c.s-include .s-string.s-quoted.s-other.s-lt-gt.s-include.s-c, .s-meta.s-preprocessor.s-c.s-include .s-punctuation.s-definition.s-string.s-begin.s-c, .s-meta.s-preprocessor.s-c.s-include .s-punctuation.s-definition.s-string.s-end.s-c {
  color: #2aa198;
 }
-.s-string.s-quoted.s-other.s-lt-gt.s-include.s-c {
- color: #2aa198;
-}
-.s-meta.s-preprocessor.s-c.s-include {
- color: #2aa198;
-}
-.s-punctuation.s-definition.s-string.s-begin.s-c {
- color: #2aa198;
-}
-.s-meta.s-preprocessor.s-c.s-include {
- color: #2aa198;
-}
-.s-punctuation.s-definition.s-string.s-end.s-c {
- color: #2aa198;
-}
-.s-other.s-package.s-exclude {
- color: #dc322f;
-}
-.s-other.s-remove {
+.s-other.s-package.s-exclude, .s-other.s-remove {
  color: #dc322f;
 }
 .s-other.s-add {
  color: #2aa198;
 }
-.s-punctuation.s-section.s-group.s-tex {
- color: #dc322f;
-}
-.s-punctuation.s-definition.s-arguments.s-begin.s-latex {
- color: #dc322f;
-}
-.s-punctuation.s-definition.s-arguments.s-end.s-latex {
- color: #dc322f;
-}
-.s-punctuation.s-definition.s-arguments.s-latex {
+.s-punctuation.s-section.s-group.s-tex, .s-punctuation.s-definition.s-arguments.s-begin.s-latex, .s-punctuation.s-definition.s-arguments.s-end.s-latex, .s-punctuation.s-definition.s-arguments.s-latex {
  color: #dc322f;
 }
 .s-meta.s-group.s-braces.s-tex {
@@ -367,37 +178,16 @@
 .s-punctuation.s-definition.s-constant.s-math.s-tex {
  color: #dc322f;
 }
-.s-text.s-tex.s-latex {
- color: #2aa198;
-}
-.s-constant.s-other.s-math.s-tex {
- color: #2aa198;
-}
-.s-constant.s-other.s-general.s-math.s-tex {
- color: #2aa198;
-}
-.s-constant.s-other.s-general.s-math.s-tex {
- color: #2aa198;
-}
-.s-constant.s-character.s-math.s-tex {
+.s-text.s-tex.s-latex .s-constant.s-other.s-math.s-tex, .s-constant.s-other.s-general.s-math.s-tex, .s-constant.s-other.s-general.s-math.s-tex, .s-constant.s-character.s-math.s-tex {
  color: #2aa198;
 }
 .s-string.s-other.s-math.s-tex {
  color: #b58900;
 }
-.s-punctuation.s-definition.s-string.s-begin.s-tex {
+.s-punctuation.s-definition.s-string.s-begin.s-tex, .s-punctuation.s-definition.s-string.s-end.s-tex {
  color: #dc322f;
 }
-.s-punctuation.s-definition.s-string.s-end.s-tex {
- color: #dc322f;
-}
-.s-keyword.s-control.s-label.s-latex {
- color: #2aa198;
-}
-.s-text.s-tex.s-latex {
- color: #2aa198;
-}
-.s-constant.s-other.s-general.s-math.s-tex {
+.s-keyword.s-control.s-label.s-latex, .s-text.s-tex.s-latex .s-constant.s-other.s-general.s-math.s-tex {
  color: #2aa198;
 }
 .s-variable.s-parameter.s-definition.s-label.s-latex {
@@ -415,28 +205,16 @@
 .s-keyword.s-control.s-ref.s-latex {
  color: #2aa198;
 }
-.s-storage.s-type.s-class.s-python {
- color: #859900;
-}
-.s-storage.s-type.s-function.s-python {
- color: #859900;
-}
-.s-storage.s-modifier.s-global.s-python {
+.s-storage.s-type.s-class.s-python, .s-storage.s-type.s-function.s-python, .s-storage.s-modifier.s-global.s-python {
  color: #859900;
 }
 .s-support.s-type.s-exception.s-python {
  color: #b58900;
 }
-.s-meta.s-scope.s-for-in-loop.s-shell {
+.s-meta.s-scope.s-for-in-loop.s-shell, .s-variable.s-other.s-loop.s-shell {
  color: #586e75;
 }
-.s-variable.s-other.s-loop.s-shell {
- color: #586e75;
-}
-.s-meta.s-scope.s-case-block.s-shell {
- color: #586e75;
-}
-.s-meta.s-scope.s-case-body.s-shell {
+.s-meta.s-scope.s-case-block.s-shell, .s-meta.s-scope.s-case-body.s-shell {
  color: #586e75;
 }
 .s-punctuation.s-definition.s-logical-expression.s-shell {
@@ -448,10 +226,7 @@
 .s-support.s-function.s-perl {
  color: #268bd2;
 }
-.s-meta.s-diff {
- color: #93a1a1;
-}
-.s-meta.s-diff.s-header {
+.s-meta.s-diff, .s-meta.s-diff.s-header {
  color: #93a1a1;
 }
 .s-meta.s-diff.s-range {
@@ -466,10 +241,7 @@
 .s-markup.s-inserted {
  color: #859900;
 }
-.s-markup.s-heading {
- color: #b58900;
-}
-.s-punctuation.s-definition.s-heading.s-markdown {
+.s-markup.s-heading, .s-punctuation.s-definition.s-heading.s-markdown {
  color: #b58900;
 }
 .s-markup.s-quote {
@@ -481,22 +253,13 @@ font-style: italic;
 .s-markup.s-bold {
 font-weight: bold;
 }
-.s-markup.s-underline.s-link.s-markdown {
- color: #2aa198;
-}
-.s-meta.s-link.s-reference {
- color: #2aa198;
-}
-.s-constant.s-other.s-reference.s-link.s-markdown {
+.s-markup.s-underline.s-link.s-markdown, .s-meta.s-link.s-reference .s-constant.s-other.s-reference.s-link.s-markdown {
  color: #2aa198;
 }
 .s-constant.s-other.s-reference.s-link.s-markdown {
  color: #6c71c4;
 }
-.s-meta.s-paragraph.s-markdown {
- background-color: #eee8d5;
-}
-.s-meta.s-dummy.s-line-break {
+.s-meta.s-paragraph.s-markdown .s-meta.s-dummy.s-line-break {
  background-color: #eee8d5;
 }
 .s-sublimelinter.s-notes {
@@ -551,12 +314,6 @@ font-weight: bold;
 .s-markup.s-changed.s-git_gutter {
  color: #b58900;
 }
-.s-variable.s-other.s-readwrite.s-js {
- color: #657b83;
-}
-.s-variable.s-other.s-object.s-js {
- color: #657b83;
-}
-.s-variable.s-other.s-constant.s-js {
+.s-variable.s-other.s-readwrite.s-js, .s-variable.s-other.s-object.s-js, .s-variable.s-other.s-constant.s-js {
  color: #657b83;
 }
