@@ -75,6 +75,14 @@ h2:hover ~ .edit, .edit:hover {
   opacity: 1;
 }
 
+h3 {
+  font-size: 100%;
+}
+
+li {
+  margin: 0.5em 0;
+}
+
 .add-container {
   margin: -1em 0 2em;
 }
