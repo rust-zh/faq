@@ -6,9 +6,7 @@
 
 如果想要在多个 `Future` 中的第一个完成后就返回，可以使用 futures 的 [`select`][select]、[`select_all`][select_all] 和 [`select_ok`][select_ok] 函数或 tokio 的 [`select!`][select-macro] 宏。
 
-需要注意的是，上面这些函数和宏在每次被轮询的时候，都会轮询里面每一个未完成的 `Future`，因此当其所带的 `Future` 很多时可能会有性能问题。
-
-使用 futures 提供的 [`FuturesOrdered`][FuturesOrdered] 和 [`FuturesUnordered`][FuturesUnordered] 这两个结构可以解决这一问题。它们是为管理大量的 `Future` 而设计的，只会去轮询收到了唤醒通知的 `Future`。它们将这些 `Future` 聚合成一个 [`Stream`][Stream] 逐个返回里面 `Future` 的结果，其中前者会按照输入的 `Future` 的顺序返回，而后者则是以任意顺序（可以近似看作按照完成顺序）返回。
+需要注意的是，上面这些函数和宏在每次被轮询的时候，无法插入新的 `Future`——使用 futures 提供的 [`FuturesOrdered`][FuturesOrdered] 和 [`FuturesUnordered`][FuturesUnordered] 这两个结构可以解决这一问题。它们将这些 `Future` 聚合成一个 [`Stream`][Stream] 逐个返回里面 `Future` 的结果，其中前者会按照输入的 `Future` 的顺序返回，而后者则是以任意顺序（可以近似看作按照完成顺序）返回。同时，也可以调用 `push` 方法来插入一个 Future 进行轮询。
 
 
 [futures]: https://crates.io/crates/futures
