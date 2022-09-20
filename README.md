@@ -27,6 +27,6 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-[telegram]: https://t.me/rust_zh
+[telegram]: https://t.me/rust_zh1
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/deed.zh
 [GPLv3]: https://www.gnu.org/licenses/gpl-3.0.zh-cn.html
