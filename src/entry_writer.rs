@@ -65,7 +65,9 @@ where
                         CODE_HIGHLIGHT_CLASS_STYLE,
                     );
                     for line in text.split_inclusive('\n') {
-                        generator.parse_html_for_line_which_includes_newline(line);
+                        generator
+                            .parse_html_for_line_which_includes_newline(line)
+                            .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?;
                     }
                     write!(output, "{}", generator.finalize())
                 } else {

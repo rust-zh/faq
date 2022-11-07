@@ -86,7 +86,7 @@ fn main() -> Result<()> {
     let theme = theme_set.themes.get("Solarized (light)").unwrap();
     fs::write(
         &out.join("highlight.css"),
-        css_for_theme_with_class_style(theme, CODE_HIGHLIGHT_CLASS_STYLE),
+        css_for_theme_with_class_style(theme, CODE_HIGHLIGHT_CLASS_STYLE)?,
     )?;
 
     Ok(())
