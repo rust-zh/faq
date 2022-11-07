@@ -10,7 +10,7 @@ publish = false
 anyhow = "1.0.32"
 glob = "0.3.0"
 handlebars = "4.0.1"
-pulldown-cmark = "0.8.0"
+pulldown-cmark = "0.9"
 serde = { version = "1.0.115", features = ["derive"] }
 v_htmlescape = "0.14.1"
 syntect = "4.4.0"

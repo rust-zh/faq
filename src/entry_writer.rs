@@ -1,6 +1,6 @@
 use crate::CODE_HIGHLIGHT_CLASS_STYLE;
 use once_cell::sync::Lazy;
-use pulldown_cmark::{BrokenLink, CodeBlockKind, Event, Options, Parser, Tag};
+use pulldown_cmark::{BrokenLink, CodeBlockKind, Event, HeadingLevel, Options, Parser, Tag};
 use std::collections::HashMap;
 use std::io::{self, Write};
 use syntect::html::ClassedHTMLGenerator;
@@ -40,7 +40,7 @@ where
         let glossary = self.glossary;
         let mut broken_link_callback = move |link: BrokenLink<'_>| {
             glossary
-                .get(link.reference)
+                .get(&*link.reference)
                 .map(|title| ("".into(), title.as_str().into()))
         };
         Parser::new_with_broken_link_callback(
@@ -86,10 +86,10 @@ where
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "<p>"),
-            Tag::Heading(level) if level == 1 => {
+            Tag::Heading(level, _, _) if level == HeadingLevel::H1 => {
                 write!(output, r##"<h2 id="{0}"><a href="#{0}">"##, self.name)
             }
-            Tag::Heading(level) => write!(output, "<h{}>", level + 1),
+            Tag::Heading(level, _, _) => write!(output, "<h{}>", level as i32 + 1),
             Tag::Link(_, dest, title) => {
                 write!(output, "<a")?;
                 if !dest.is_empty() {
@@ -118,8 +118,8 @@ where
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "</p>"),
-            Tag::Heading(level) if level == 1 => write!(output, "</a></h2>"),
-            Tag::Heading(level) => write!(output, "</h{}>", level + 1),
+            Tag::Heading(level, _, _) if level == HeadingLevel::H1 => write!(output, "</a></h2>"),
+            Tag::Heading(level, _, _) => write!(output, "</h{}>", level as i32 + 1),
             Tag::Link(_, _, _) => write!(output, "</a>"),
             Tag::CodeBlock(CodeBlockKind::Fenced(_)) => {
                 self.current_syntax = None;
