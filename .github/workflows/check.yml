@@ -9,14 +9,6 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-          components: rustfmt
-
       - name: Run cargo fmt
         uses: actions-rs/cargo@v1
         with:
@@ -29,15 +21,6 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
-
-      - name: Install stable toolchain
-        id: toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-          components: clippy
 
       - name: Cache Cargo
         uses: actions/cache@v3
@@ -53,10 +36,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: target
-          key: ${{ runner.os }}-clippy-${{ steps.toolchain.outputs.rustc_hash }}-${{ hashFiles('**/Cargo.lock') }}-${{ hashFiles('**/*.rs') }}
+          key: ${{ runner.os }}-clippy-${{ hashFiles('**/Cargo.lock') }}-${{ hashFiles('**/*.rs') }}
           restore-keys: |
-            ${{ runner.os }}-clippy-${{ steps.toolchain.outputs.rustc_hash }}-${{ hashFiles('**/Cargo.lock') }}-
-            ${{ runner.os }}-clippy-${{ steps.toolchain.outputs.rustc_hash }}-
+            ${{ runner.os }}-clippy-${{ hashFiles('**/Cargo.lock') }}-
+            ${{ runner.os }}-clippy-
 
       - name: Run cargo clippy
         uses: actions-rs/cargo@v1
