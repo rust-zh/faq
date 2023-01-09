@@ -76,7 +76,7 @@ fn main() -> Result<()> {
             let mut output = BufWriter::new(output);
             handlebars.render_template_to_write(&template, &data, &mut output)?;
         } else {
-            fs::hard_link(&entry.path(), out.join(entry.file_name()))
+            fs::hard_link(entry.path(), out.join(entry.file_name()))
                 .with_context(|| format!("failed to link {:?}", entry.file_name()))?;
         }
     }
@@ -85,7 +85,7 @@ fn main() -> Result<()> {
     let theme_set = ThemeSet::load_defaults();
     let theme = theme_set.themes.get("Solarized (light)").unwrap();
     fs::write(
-        &out.join("highlight.css"),
+        out.join("highlight.css"),
         css_for_theme_with_class_style(theme, CODE_HIGHLIGHT_CLASS_STYLE)?,
     )?;
 
