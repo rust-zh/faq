@@ -25,7 +25,8 @@ const CODE_HIGHLIGHT_CLASS_STYLE: ClassStyle = ClassStyle::SpacedPrefixed { pref
 fn main() -> Result<()> {
     env::set_current_dir(env::var("CARGO_MANIFEST_DIR")?)?;
 
-    let glossary = fs::read_to_string("content/glossary.toml").context("failed to read glossary file")?;
+    let glossary =
+        fs::read_to_string("content/glossary.toml").context("failed to read glossary file")?;
     let glossary: HashMap<String, String> =
         toml::from_str(&glossary).context("failed to parse glossary file")?;
 
