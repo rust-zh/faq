@@ -15,4 +15,4 @@ serde = { version = "1.0.115", features = ["derive"] }
 v_htmlescape = "0.15"
 syntect = "5"
 once_cell = "1.4.1"
-toml = "0.5.7"
+toml = "0.7"
