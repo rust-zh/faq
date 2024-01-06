@@ -84,6 +84,10 @@
     <h2 id="vec-new-ptr"><a href="#vec-new-ptr">新创建的空 <code>Vec&lt;T&gt;</code> 的指针为何指向<code>1</code>、<code>2</code>、<code>4</code>、<code>8</code>等地址？</a></h2><p>当 <code>Vec</code> 的容量为0时，没有合法的操作会向其指针指向的位置进行读取和写入，进行任何读写之前都必然会有一次内存分配，因此这个初始的指针并不需要是一个有效的指针。这也使得创建 <code>Vec</code> 本身没有进行实际内存分配的必要，既省去了内存分配的开销，也让创建容器的操作可以在常量上下文中使用。</p><p>而因为 <code>Vec</code> 需要能被作为<a title="slice">切片</a>使用，由于切片对数据指针的<a href="https://doc.rust-lang.org/std/slice/fn.from_raw_parts.html#safety">要求</a>，它的指针的地址需要是非空并且正确对齐的，因而简单起见便选择了类型的对齐的大小作为这个无效指针指向的地址。</p>
     <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/vec-new-ptr.md">编辑</a>
   </article>
+<article>
+    <h2 id="where-to-find-crates"><a href="#where-to-find-crates">有什么 crate 可以…？在哪找到它们？</a></h2><p>有很多 crates 列表，这里是其中的一些：</p><ul><li><a href="https://github.com/rust-unofficial/awesome-rust">rust-unofficial&#x2f;awesome-rust</a></li></ul>
+    <a class="edit" href="https://github.com/rust-zh/faq/blob/master/content/where-to-find-crates.md">编辑</a>
+  </article>
 <div class="add-container">
     <a class="add" href="https://github.com/rust-zh/faq/tree/master/content">+ 贡献新条目</a>
   </div>
