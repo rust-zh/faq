@@ -88,7 +88,7 @@ where
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "<p>"),
-            Tag::Heading(level, _, _) if level == HeadingLevel::H1 => {
+            Tag::Heading(HeadingLevel::H1, _, _) => {
                 write!(output, r##"<h2 id="{0}"><a href="#{0}">"##, self.name)
             }
             Tag::Heading(level, _, _) => write!(output, "<h{}>", level as i32 + 1),
@@ -120,7 +120,7 @@ where
         let output = &mut self.output;
         match tag {
             Tag::Paragraph => write!(output, "</p>"),
-            Tag::Heading(level, _, _) if level == HeadingLevel::H1 => write!(output, "</a></h2>"),
+            Tag::Heading(HeadingLevel::H1, _, _) => write!(output, "</a></h2>"),
             Tag::Heading(level, _, _) => write!(output, "</h{}>", level as i32 + 1),
             Tag::Link(_, _, _) => write!(output, "</a>"),
             Tag::CodeBlock(CodeBlockKind::Fenced(_)) => {
